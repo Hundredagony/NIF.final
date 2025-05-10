@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Team - NIS</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    body {
+      background: url('bg3.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    .logo span {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 16px;
+      border-radius: 30px;
+      transition: background 0.3s, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    .main {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      width: 90%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #003366;
+    }
+
+    .team {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .team h4 {
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <span>NIS</span>
+    </div>
+    <nav>
+      <a href="view-patients.html">View Patient</a>
+      <a href="input-patient.html">New Patient</a>
+      <a href="team.html">Our Team</a>
+      <a href="mission-vision.html">About</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <h1>Our Team</h1>
+    <div class="team">
+      <h4>• Canoy, Joesyn Marie</h4>
+      <h4>• Casidsid, Rex</h4>
+      <h4>• Celajes, Mariel Nicalen</h4>
+      <h4>• De La Rama, Jestine</h4>
+      <h4>• Dignadice, Nhezel Lyn</h4>
+      <h4>• Garcia, Jose Mario</h4>
+      <h4>• Lorilla, KC</h4>
+      <h4>• Ortiz, Julianna Claire</h4>
+      <h4>• Pamplona, Cresencia</h4>
+    </div>
+  </div>
+
+</body>
+</html>

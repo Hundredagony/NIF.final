@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Hospital Management System</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('bg3.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      color: #111;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn {
+      background: #003366;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+      color: white;
+    }
+
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      text-decoration: underline;
+    }
+
+    .section p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .section img {
+      max-width: 150px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .top-buttons {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+
+    .top-buttons .btn {
+      padding: 10px 20px;
+      font-size: 15px;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .timeline-item {
+      margin-bottom: 20px;
+      border-left: 3px solid #007BFF;
+      padding-left: 15px;
+    }
+
+    .timeline-item h4 {
+      margin-bottom: 5px;
+      color: #007BFF;
+    }
+
+    /* Team Section */
+    .team {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .member {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      width: 180px;
+      text-align: center;
+    }
+
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .member h4 {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 600px) {
+      .team {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .section h2 {
+        font-size: 18px;
+      }
+
+      .section p {
+        font-size: 16px;
+      }
+
+      .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Right Button -->
+  <div class="top-buttons">
+    <button class="btn" onclick="window.location.href='index.html'"> Home</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>About Us</h1>
+
+    <!-- Logo Section -->
+    <div class="section">
+      <h2>Our Logo</h2>
+      <img src="logo.png" alt="Hospital System Logo">
+      <p>
+        The logo of our Hospital Management System represents the union of care, technology, and patient well-being.
+        The colors and design symbolize trust, care, and professionalism.
+      </p>
+    </div>
+
+    <!-- Mission and Vision -->
+    <div class="section">
+      <h2>Our Mission & Vision</h2>
+      <p><strong>Mission:</strong> Our mission is to provide top-quality healthcare management services that are efficient, accessible, and patient-centered.</p>
+      <p><strong>Vision:</strong> To be the leading provider of innovative healthcare management solutions through compassionate care and technology.</p>
+    </div>
+
+
+ 
+</body>
+</html>

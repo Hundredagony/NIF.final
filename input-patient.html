@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enter Patient Data</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('bg3.jpg') no-repeat center center/cover;
+      padding: 0;
+    }
+
+  header {
+  background: #003366;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* ✅ This centers it horizontally */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    .logo span {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 16px;
+      border-radius: 30px;
+      transition: background 0.3s, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+    .container {
+      max-width: 100%;
+      margin: 30px auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 20px;
+    }
+
+    .section-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      flex: 1 1 350px;
+      min-width: 300px;
+      max-width: 500px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 15px;
+    }
+
+    form {
+      display: contents;
+    }
+
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .section label {
+      flex: 1 1 100%;
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
+
+    label input, label select, label textarea {
+      margin-top: 6px;
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #f9f9f9;
+    }
+
+    .list-section ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .list-section li {
+      margin-bottom: 8px;
+    }
+
+    .list-section input {
+      width: 90%;
+      padding: 8px;
+    }
+
+    .add-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background-color: #218838;
+    }
+
+    .actions {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .actions button {
+      padding: 12px 24px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #007BFF;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <span>NIS</span>
+    </div>
+    <nav>
+      <a href="view-patients.html">View Patient</a>
+      <a href="input-patient.html">New Patient</a>
+
+      <a href="mission-vision.html">About</a>
+
+    </nav>
+  </header>
+
+  <form id="patientForm">
+    <div class="container">
+      <div class="section-box">
+        <h2>Patient Information</h2>
+        <div class="section">
+          <label>First Name <input type="text" id="firstName" required></label>
+          <label>Last Name <input type="text" id="lastName" required></label>
+          <label>Middle Initial <input type="text" id="middleInitial"></label>
+          <label>Age <input type="number" id="age"></label>
+          <label>Gender
+            <select id="gender">
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </label>
+          <label>Date/Time <input type="datetime-local" id="datetime"></label>
+          <label>Language <input type="text" id="language"></label>
+        </div>
+      </div>
+
+      <div class="section-box">
+        <h2>Medical History</h2>
+        <div class="section">
+          <label>Chief Complaint <textarea id="chiefComplaint"></textarea></label>
+          <label>Rx Allergy / Allergy <textarea id="allergies"></textarea></label>
+          <label>Past Surgical History <textarea id="pastSurgical"></textarea></label>
+          <label>Medical History <textarea id="medHistory"></textarea></label>
+          <label>Social History <textarea id="socialHistory"></textarea></label>
+        </div>
+      </div>
+
+      <div class="section-box">
+        <h2>Vitals & Medications</h2>
+        <div class="section">
+          <label>Temp <input type="text" id="temp"></label>
+          <label>Pulse <input type="text" id="pulse"></label>
+          <label>Resp <input type="text" id="resp"></label>
+          <label>B/P <input type="text" id="bp"></label>
+
+          <label>Medications:
+            <ul id="medicationsList">
+              <li><input type="text" name="medication" placeholder="Medication 1" /></li>
+            </ul>
+            <button type="button" class="add-btn" onclick="addMedication()">➕ Add Medication</button>
+          </label>
+
+          <label>Diet:
+            <ul id="dietList">
+              <li><input type="text" name="diet" placeholder="Diet 1" /></li>
+            </ul>
+            <button type="button" class="add-btn" onclick="addDiet()">➕ Add Diet</button>
+          </label>
+        </div>
+      </div>
+
+      <div class="section-box">
+        <h2>Clinical Notes</h2>
+        <div class="section">
+          <label>Diagnosis <textarea id="diagnosis"></textarea></label>
+          <label>Laboratory/Diagnostic Test <textarea id="labTests"></textarea></label>
+          <label>Physical Examination <textarea id="physicalExam"></textarea></label>
+          <label>Doctor’s Orders <textarea id="doctorOrders"></textarea></label>
+          <label>Procedures <textarea id="procedures"></textarea></label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="save">Data Save</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const index = urlParams.get('index');
+    const patients = JSON.parse(localStorage.getItem('patients')) || [];
+
+    if (index !== null && patients[index]) {
+      const p = patients[index];
+      document.getElementById('firstName').value = p.firstName || '';
+      document.getElementById('lastName').value = p.lastName || '';
+      document.getElementById('middleInitial').value = p.middleInitial || '';
+      document.getElementById('age').value = p.age || '';
+      document.getElementById('gender').value = p.gender || '';
+      document.getElementById('datetime').value = p.datetime || '';
+      document.getElementById('language').value = p.language || '';
+      document.getElementById('chiefComplaint').value = p.chiefComplaint || '';
+      document.getElementById('allergies').value = p.allergies || '';
+      document.getElementById('pastSurgical').value = p.pastSurgical || '';
+      document.getElementById('medHistory').value = p.medHistory || '';
+      document.getElementById('socialHistory').value = p.socialHistory || '';
+      document.getElementById('temp').value = p.temp || '';
+      document.getElementById('pulse').value = p.pulse || '';
+      document.getElementById('resp').value = p.resp || '';
+      document.getElementById('bp').value = p.bp || '';
+      document.getElementById('diagnosis').value = p.diagnosis || '';
+      document.getElementById('labTests').value = p.labTests || '';
+      document.getElementById('physicalExam').value = p.physicalExam || '';
+      document.getElementById('doctorOrders').value = p.doctorOrders || '';
+      document.getElementById('procedures').value = p.procedures || '';
+
+      if (p.medications) {
+        const list = document.getElementById('medicationsList');
+        list.innerHTML = '';
+        p.medications.forEach((med, i) => {
+          const li = document.createElement('li');
+          li.innerHTML = `<input type="text" name="medication" value="${med}" placeholder="Medication ${i + 1}">`;
+          list.appendChild(li);
+        });
+      }
+
+      if (p.diet) {
+        const list = document.getElementById('dietList');
+        list.innerHTML = '';
+        p.diet.forEach((item, i) => {
+          const li = document.createElement('li');
+          li.innerHTML = `<input type="text" name="diet" value="${item}" placeholder="Diet ${i + 1}">`;
+          list.appendChild(li);
+        });
+      }
+    }
+
+    function addMedication() {
+      const list = document.getElementById('medicationsList');
+      const count = list.children.length + 1;
+      const li = document.createElement('li');
+      li.innerHTML = `<input type="text" name="medication" placeholder="Medication ${count}">`;
+      list.appendChild(li);
+    }
+
+    function addDiet() {
+      const list = document.getElementById('dietList');
+      const count = list.children.length + 1;
+      const li = document.createElement('li');
+      li.innerHTML = `<input type="text" name="diet" placeholder="Diet ${count}">`;
+      list.appendChild(li);
+    }
+
+    document.getElementById('patientForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const meds = Array.from(document.querySelectorAll('input[name="medication"]'))
+        .map(input => input.value.trim()).filter(val => val);
+      const diets = Array.from(document.querySelectorAll('input[name="diet"]'))
+        .map(input => input.value.trim()).filter(val => val);
+
+      const patient = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        middleInitial: document.getElementById('middleInitial').value,
+        age: document.getElementById('age').value,
+        gender: document.getElementById('gender').value,
+        datetime: document.getElementById('datetime').value,
+        language: document.getElementById('language').value,
+        chiefComplaint: document.getElementById('chiefComplaint').value,
+        allergies: document.getElementById('allergies').value,
+        pastSurgical: document.getElementById('pastSurgical').value,
+        medHistory: document.getElementById('medHistory').value,
+        socialHistory: document.getElementById('socialHistory').value,
+        temp: document.getElementById('temp').value,
+        pulse: document.getElementById('pulse').value,
+        resp: document.getElementById('resp').value,
+        bp: document.getElementById('bp').value,
+        medications: meds,
+        diet: diets,
+        diagnosis: document.getElementById('diagnosis').value,
+        labTests: document.getElementById('labTests').value,
+        physicalExam: document.getElementById('physicalExam').value,
+        doctorOrders: document.getElementById('doctorOrders').value,
+        procedures: document.getElementById('procedures').value
+      };
+
+      if (index !== null && patients[index]) {
+        patients[index] = patient;
+      } else {
+        patients.push(patient);
+      }
+
+      localStorage.setItem('patients', JSON.stringify(patients));
+      alert("Patient data saved!");
+      window.location.href = 'view-patients.html';
+    });
+  </script>
+</body>
+</html>
