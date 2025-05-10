@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard - NIS</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
     body {
-      background: url('bg4.jpg') no-repeat center center/cover;
+      background: url('bg3.jpg') no-repeat center center/cover;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -17,7 +22,7 @@
     }
 
     header {
-      background:  #003366;
+      background: #003366;
       color: white;
       display: flex;
       justify-content: space-between;
@@ -27,6 +32,7 @@
       max-width: 1200px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
 
     .logo {
@@ -42,6 +48,21 @@
     .logo span {
       font-size: 24px;
       font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      border-radius: 2px;
+      transition: 0.3s;
     }
 
     nav {
@@ -166,14 +187,24 @@
     }
 
     @media (max-width: 768px) {
-      .dashboard-cards {
+      nav {
+        position: absolute;
+        top: 80px;
+        right: 40px;
+        background: #003366;
         flex-direction: column;
-        align-items: center;
+        width: 200px;
+        border-radius: 10px;
+        padding: 10px;
+        display: none;
       }
 
-      nav a {
-        display: block;
-        margin: 10px 0;
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
       }
     }
   </style>
@@ -185,11 +216,17 @@
       <img src="logo.png" alt="Logo">
       <span>NIS</span>
     </div>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="navbar">
       <a href="view-patients.html">View Patient</a>
       <a href="input-patient.html">New Patient</a>
-  <a href="team.html">Our Team</a>
+      <a href="team.html">Our Team</a>
       <a href="mission-vision.html">About</a>
+      <a href="index.html">Sign Out</a>
     </nav>
   </header>
 
@@ -217,6 +254,12 @@
   </div>
 
   <script>
+    // Toggle Navbar
+    function toggleMenu() {
+      const nav = document.getElementById('navbar');
+      nav.classList.toggle('show');
+    }
+
     // Live Clock
     function updateClock() {
       const now = new Date();
@@ -233,40 +276,40 @@
 
     // Search Function
     function searchPatients() {
-    const query = document.getElementById("searchBar").value.toLowerCase().trim();
-    const resultsList = document.getElementById("searchResults");
-    resultsList.innerHTML = "";
+      const query = document.getElementById("searchBar").value.toLowerCase().trim();
+      const resultsList = document.getElementById("searchResults");
+      resultsList.innerHTML = "";
 
-    if (!query) {
-      resultsList.style.display = "none";
-      return;
+      if (!query) {
+        resultsList.style.display = "none";
+        return;
+      }
+
+      const patients = JSON.parse(localStorage.getItem("patients")) || [];
+
+      const matches = patients
+        .map((p, i) => ({ ...p, index: i }))
+        .filter(p =>
+          (p.firstName && p.firstName.toLowerCase().includes(query)) ||
+          (p.lastName && p.lastName.toLowerCase().includes(query))
+        );
+
+      if (matches.length === 0) {
+        resultsList.style.display = "none";
+        return;
+      }
+
+      matches.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = `${p.firstName || ''} - ${p.lastName || ''}`;
+        li.onclick = () => {
+          window.location.href = `patient-details.html?index=${p.index}`;
+        };
+        resultsList.appendChild(li);
+      });
+
+      resultsList.style.display = "block";
     }
-
-    const patients = JSON.parse(localStorage.getItem("patients")) || [];
-
-    const matches = patients
-      .map((p, i) => ({ ...p, index: i }))
-      .filter(p =>
-        (p.firstName && p.firstName.toLowerCase().includes(query)) ||
-        (p.lastName && p.lastName.toLowerCase().includes(query))
-      );
-
-    if (matches.length === 0) {
-      resultsList.style.display = "none";
-      return;
-    }
-
-    matches.forEach(p => {
-      const li = document.createElement("li");
-      li.textContent = `${p.firstName || ''} - ${p.lastName || ''}`;
-      li.onclick = () => {
-        window.location.href = `patient-details.html?index=${p.index}`;
-      };
-      resultsList.appendChild(li);
-    });
-
-    resultsList.style.display = "block";
-  }
   </script>
 
 </body>
