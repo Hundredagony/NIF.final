@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>View Patients</title>
   <style>
     * {
@@ -11,27 +11,28 @@
       box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
-    html, body{
-      height: 100%
+    html, body {
+      height: 100%;
     }
+
     body {
       background: url('bg3.jpg') no-repeat center center/cover;
     }
 
-header {
-  background: #003366;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 40px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto; /* ✅ This centers it horizontally */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
+    header {
+      background: #003366;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
 
     .logo {
       display: flex;
@@ -51,21 +52,60 @@ header {
     nav {
       display: flex;
       gap: 20px;
+      align-items: center;
     }
 
-    nav a {
+    nav a, nav input[type="text"] {
       color: white;
-      text-decoration: none;
       font-weight: bold;
       background: rgba(255, 255, 255, 0.2);
-      padding: 10px 16px;
+      padding: 8px 14px;
+      border: none;
       border-radius: 30px;
+      text-decoration: none;
       transition: background 0.3s, transform 0.3s ease;
     }
 
     nav a:hover {
       background: rgba(255, 255, 255, 0.4);
       transform: scale(1.05);
+    }
+
+    nav input[type="text"]::placeholder {
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: #003366;
+        padding: 15px;
+        border-radius: 10px;
+        width: 230px;
+      }
+
+      nav a, nav input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav.show {
+        display: flex;
+      }
     }
 
     .container {
@@ -133,11 +173,11 @@ header {
       <img src="logo.png" alt="Logo" />
       <span>NIS</span>
     </div>
-    <nav>
-      <input type="text" id="searchInput" placeholder="Search patient...">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
+      <input type="text" id="searchInput" placeholder="Search patient..." />
       <a href="index.html">Home</a>
       <a href="input-patient.html">New Patient</a>
-  
       <a href="mission-vision.html">About</a>
     </nav>
   </header>
@@ -159,6 +199,10 @@ header {
   </div>
 
   <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("show");
+    }
+
     const patients = JSON.parse(localStorage.getItem('patients')) || [];
     const tableBody = document.getElementById('patientsTable');
 
