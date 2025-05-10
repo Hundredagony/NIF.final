@@ -11,42 +11,48 @@
       box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
-    html, body {
-      height: 100%;
+    html, body{
+      height: 100%
     }
     body {
       background: url('bg3.jpg') no-repeat center center/cover;
     }
-    header {
-      background: #003366;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 40px;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+
+header {
+  background: #003366;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* ✅ This centers it horizontally */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
     .logo img {
       height: 60px;
     }
+
     .logo span {
       font-size: 24px;
       font-weight: bold;
     }
+
     nav {
       display: flex;
-      gap: 12px;
-      align-items: center;
+      gap: 20px;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -56,17 +62,12 @@
       border-radius: 30px;
       transition: background 0.3s, transform 0.3s ease;
     }
+
     nav a:hover {
       background: rgba(255, 255, 255, 0.4);
       transform: scale(1.05);
     }
-    nav input,
-    nav select {
-      padding: 8px 14px;
-      border-radius: 20px;
-      border: none;
-      outline: none;
-    }
+
     .container {
       max-width: 1100px;
       margin: 30px auto;
@@ -75,26 +76,32 @@
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+
     h1 {
       text-align: center;
       margin-bottom: 20px;
       color: #003366;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
     }
+
     th, td {
       padding: 12px 16px;
       border-bottom: 1px solid #ccc;
       text-align: left;
     }
+
     th {
       background-color: #f0f0f0;
     }
+
     tr:hover {
       background-color: #eef7ff;
     }
+
     .actions button {
       margin-right: 8px;
       padding: 6px 12px;
@@ -103,14 +110,17 @@
       font-size: 14px;
       cursor: pointer;
     }
+
     .edit-btn {
       background-color: #ffc107;
       color: black;
     }
+
     .delete-btn {
       background-color: #dc3545;
       color: white;
     }
+
     .view-btn {
       background-color: #007BFF;
       color: white;
@@ -124,15 +134,10 @@
       <span>NIS</span>
     </div>
     <nav>
-      <input type="text" id="searchInput" placeholder="Search patient..." />
-      <select id="genderFilter">
-        <option value="">All Genders</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
+      <input type="text" id="searchInput" placeholder="Search patient...">
       <a href="index.html">Home</a>
       <a href="input-patient.html">New Patient</a>
+  
       <a href="mission-vision.html">About</a>
     </nav>
   </header>
@@ -156,37 +161,24 @@
   <script>
     const patients = JSON.parse(localStorage.getItem('patients')) || [];
     const tableBody = document.getElementById('patientsTable');
-    const searchInput = document.getElementById('searchInput');
-    const genderFilter = document.getElementById('genderFilter');
 
     function renderPatients() {
-      const searchValue = searchInput.value.toLowerCase();
-      const selectedGender = genderFilter.value;
-
       tableBody.innerHTML = '';
-
       patients.forEach((p, i) => {
         const fullName = `${p.firstName || ''} ${p.middleInitial || ''} ${p.lastName || ''}`.trim();
-        const gender = p.gender || '';
-        
-        const matchesSearch = fullName.toLowerCase().includes(searchValue);
-        const matchesGender = selectedGender === '' || gender === selectedGender;
-
-        if (matchesSearch && matchesGender) {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${fullName || 'N/A'}</td>
-            <td>${p.age || 'N/A'}</td>
-            <td>${gender || 'N/A'}</td>
-            <td>${p.datetime || 'N/A'}</td>
-            <td class="actions">
-              <button class="view-btn" onclick="viewPatient(${i})">View</button>
-              <button class="edit-btn" onclick="editPatient(${i})">Edit</button>
-              <button class="delete-btn" onclick="deletePatient(${i})">Delete</button>
-            </td>
-          `;
-          tableBody.appendChild(row);
-        }
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${fullName || 'N/A'}</td>
+          <td>${p.age || 'N/A'}</td>
+          <td>${p.gender || 'N/A'}</td>
+          <td>${p.datetime || 'N/A'}</td>
+          <td class="actions">
+            <button class="view-btn" onclick="viewPatient(${i})">View</button>
+            <button class="edit-btn" onclick="editPatient(${i})">Edit</button>
+            <button class="delete-btn" onclick="deletePatient(${i})">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
       });
     }
 
@@ -206,9 +198,18 @@
       }
     }
 
-    // Add filtering
-    searchInput.addEventListener('input', renderPatients);
-    genderFilter.addEventListener('change', renderPatients);
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const searchValue = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#patientsTable tr');
+      rows.forEach(row => {
+        const nameCell = row.querySelector('td');
+        if (nameCell && nameCell.textContent.toLowerCase().includes(searchValue)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
 
     renderPatients();
   </script>
