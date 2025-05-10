@@ -26,6 +26,7 @@
       max-width: 1200px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
 
     .logo {
@@ -46,6 +47,7 @@
     nav {
       display: flex;
       gap: 20px;
+      align-items: center;
     }
 
     nav a {
@@ -61,6 +63,40 @@
     nav a:hover {
       background: rgba(255, 255, 255, 0.4);
       transform: scale(1.05);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: #003366;
+        padding: 15px;
+        border-radius: 10px;
+        width: 230px;
+        z-index: 999;
+      }
+
+      nav a {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      nav.show {
+        display: flex;
+      }
     }
 
     .main {
@@ -99,7 +135,8 @@
       <img src="logo.png" alt="Logo">
       <span>NIS</span>
     </div>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
       <a href="view-patients.html">View Patient</a>
       <a href="input-patient.html">New Patient</a>
       <a href="team.html">Our Team</a>
@@ -121,6 +158,12 @@
       <h4>• Pamplona, Cresencia</h4>
     </div>
   </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("show");
+    }
+  </script>
 
 </body>
 </html>
