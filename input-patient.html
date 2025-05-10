@@ -16,20 +16,20 @@
       padding: 0;
     }
 
-  header {
-  background: #003366;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 40px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto; /* ✅ This centers it horizontally */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
+    header {
+      background: #003366;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
 
     .logo {
       display: flex;
@@ -44,6 +44,13 @@
     .logo span {
       font-size: 24px;
       font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
     }
 
     nav {
@@ -65,6 +72,34 @@
       background: rgba(255, 255, 255, 0.4);
       transform: scale(1.05);
     }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: #003366;
+        position: absolute;
+        top: 70px;
+        right: 40px;
+        width: 200px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      }
+
+      nav a {
+        margin-bottom: 10px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
     .container {
       max-width: 100%;
       margin: 30px auto;
@@ -173,17 +208,17 @@
       <img src="logo.png" alt="Logo">
       <span>NIS</span>
     </div>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
       <a href="view-patients.html">View Patient</a>
       <a href="input-patient.html">New Patient</a>
-
       <a href="mission-vision.html">About</a>
-
     </nav>
   </header>
 
   <form id="patientForm">
     <div class="container">
+      <!-- Patient Information Section -->
       <div class="section-box">
         <h2>Patient Information</h2>
         <div class="section">
@@ -203,6 +238,7 @@
         </div>
       </div>
 
+      <!-- Medical History Section -->
       <div class="section-box">
         <h2>Medical History</h2>
         <div class="section">
@@ -214,6 +250,7 @@
         </div>
       </div>
 
+      <!-- Vitals & Medications Section -->
       <div class="section-box">
         <h2>Vitals & Medications</h2>
         <div class="section">
@@ -238,6 +275,7 @@
         </div>
       </div>
 
+      <!-- Clinical Notes Section -->
       <div class="section-box">
         <h2>Clinical Notes</h2>
         <div class="section">
@@ -256,6 +294,10 @@
   </form>
 
   <script>
+    function toggleMenu() {
+      document.getElementById('navbar').classList.toggle('show');
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const index = urlParams.get('index');
     const patients = JSON.parse(localStorage.getItem('patients')) || [];
