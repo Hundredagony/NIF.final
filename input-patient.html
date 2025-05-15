@@ -14,6 +14,7 @@
     body {
       background: url('bg3.jpg') no-repeat center center/cover;
       padding: 0;
+      overflow-x: auto;
     }
 
     header {
@@ -101,13 +102,13 @@
     }
 
     .container {
-      max-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: max-content;
       margin: 30px auto;
       padding: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      gap: 20px;
+      overflow-x: auto;
     }
 
     .section-box {
@@ -115,9 +116,8 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      flex: 1 1 350px;
-      min-width: 300px;
-      max-width: 500px;
+      min-width: 350px;
+      max-width: 400px;
     }
 
     h1, h2 {
@@ -186,7 +186,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      margin-top: 20px;
+      margin: 40px auto;
     }
 
     .actions button {
@@ -218,7 +218,6 @@
 
   <form id="patientForm">
     <div class="container">
-      <!-- Patient Information Section -->
       <div class="section-box">
         <h2>Patient Information</h2>
         <div class="section">
@@ -238,7 +237,6 @@
         </div>
       </div>
 
-      <!-- Medical History Section -->
       <div class="section-box">
         <h2>Medical History</h2>
         <div class="section">
@@ -249,7 +247,6 @@
         </div>
       </div>
 
-      <!-- Vitals & Medications Section -->
       <div class="section-box">
         <h2>Vitals & Medications</h2>
         <div class="section">
@@ -274,7 +271,6 @@
         </div>
       </div>
 
-      <!-- Clinical Notes Section -->
       <div class="section-box">
         <h2>Clinical Notes</h2>
         <div class="section">
@@ -285,10 +281,10 @@
           <label>Procedures <textarea id="procedures"></textarea></label>
         </div>
       </div>
+    </div>
 
-      <div class="actions">
-        <button type="submit" class="save">Data Save</button>
-      </div>
+    <div class="actions">
+      <button type="submit" class="save">Data Save</button>
     </div>
   </form>
 
@@ -311,7 +307,6 @@
       document.getElementById('datetime').value = p.datetime || '';
       document.getElementById('language').value = p.language || '';
       document.getElementById('chiefComplaint').value = p.chiefComplaint || '';
-      document.getElementById('allergies').value = p.allergies || '';
       document.getElementById('pastSurgical').value = p.pastSurgical || '';
       document.getElementById('medHistory').value = p.medHistory || '';
       document.getElementById('socialHistory').value = p.socialHistory || '';
@@ -379,7 +374,6 @@
         datetime: document.getElementById('datetime').value,
         language: document.getElementById('language').value,
         chiefComplaint: document.getElementById('chiefComplaint').value,
-        allergies: document.getElementById('allergies').value,
         pastSurgical: document.getElementById('pastSurgical').value,
         medHistory: document.getElementById('medHistory').value,
         socialHistory: document.getElementById('socialHistory').value,
