@@ -188,7 +188,7 @@
 
     #analogClock {
       display: block;
-      margin: 10px auto;
+      margin: 30px auto 10px auto;
     }
 
     @media (max-width: 768px) {
@@ -244,11 +244,9 @@
         <h2 id="totalPatients">--</h2>
         <p>Total Patients</p>
       </div>
-      <div class="card">
-        <h2>Clock</h2>
-        <canvas id="analogClock" width="120" height="120"></canvas>
-      </div>
     </div>
+
+    <canvas id="analogClock" width="120" height="120"></canvas>
 
     <div class="search-section">
       <input type="text" id="searchBar" placeholder="Search by first or last name..." oninput="searchPatients()">
@@ -257,19 +255,15 @@
   </div>
 
   <script>
-    // Toggle Navbar
     function toggleMenu() {
-      const nav = document.getElementById('navbar');
-      nav.classList.toggle('show');
+      document.getElementById('navbar').classList.toggle('show');
     }
 
-    // Patient Count
     document.addEventListener('DOMContentLoaded', () => {
       const patients = JSON.parse(localStorage.getItem("patients")) || [];
       document.getElementById("totalPatients").textContent = patients.length;
     });
 
-    // Search Function
     function searchPatients() {
       const query = document.getElementById("searchBar").value.toLowerCase().trim();
       const resultsList = document.getElementById("searchResults");
@@ -356,18 +350,15 @@
       let minute = now.getMinutes();
       let second = now.getSeconds();
 
-      // Hour hand
       hour = hour % 12;
       hour = (hour * Math.PI / 6) +
              (minute * Math.PI / (6 * 60)) +
              (second * Math.PI / (360 * 60));
       drawHand(ctx, hour, radius * 0.5, radius * 0.07);
 
-      // Minute hand
       minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
       drawHand(ctx, minute, radius * 0.75, radius * 0.07);
 
-      // Second hand
       second = (second * Math.PI / 30);
       drawHand(ctx, second, radius * 0.85, radius * 0.02, "#FF0000");
     }
