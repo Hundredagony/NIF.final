@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard - Asclepius Nexus</title>
+  <title>Dashboard - Asclepius Nexus
+</title>
   <style>
     * {
       margin: 0;
@@ -33,7 +34,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       position: relative;
-      z-index: 1001;
     }
 
     .logo {
@@ -189,7 +189,6 @@
 
     @media (max-width: 768px) {
       nav {
-        display: none !important;
         position: absolute;
         top: 80px;
         right: 40px;
@@ -198,11 +197,11 @@
         width: 200px;
         border-radius: 10px;
         padding: 10px;
-        z-index: 1000;
+        display: none;
       }
 
       nav.show {
-        display: flex !important;
+        display: flex;
       }
 
       .menu-toggle {
@@ -216,7 +215,8 @@
   <header>
     <div class="logo">
       <img src="logo.png" alt="Logo">
-      <span>Asclepius Nexus</span>
+      <span>Asclepius Nexus
+</span>
     </div>
     <div class="menu-toggle" onclick="toggleMenu()">
       <span></span>
@@ -224,16 +224,17 @@
       <span></span>
     </div>
     <nav id="navbar">
-      <a href="view-patients.html" onclick="toggleMenu()">View Patient</a>
-      <a href="input-patient.html" onclick="toggleMenu()">New Patient</a>
-      <a href="team.html" onclick="toggleMenu()">Our Team</a>
-      <a href="mission-vision.html" onclick="toggleMenu()">About</a>
+      <a href="view-patients.html">View Patient</a>
+      <a href="input-patient.html">New Patient</a>
+      <a href="team.html">Our Team</a>
+      <a href="mission-vision.html">About</a>
     </nav>
   </header>
 
   <div class="main">
     <div class="welcome">
       <h1>Welcome to the Nursing Information System</h1>
+     
     </div>
 
     <div class="dashboard-cards">
@@ -301,9 +302,9 @@
 
       matches.forEach(p => {
         const li = document.createElement("li");
-        li.textContent = ${p.firstName || ''} - ${p.lastName || ''};
+        li.textContent = `${p.firstName || ''} - ${p.lastName || ''}`;
         li.onclick = () => {
-          window.location.href = patient-details.html?index=${p.index};
+          window.location.href = `patient-details.html?index=${p.index}`;
         };
         resultsList.appendChild(li);
       });
