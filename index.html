@@ -33,6 +33,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       position: relative;
+      z-index: 1001;
     }
 
     .logo {
@@ -188,6 +189,7 @@
 
     @media (max-width: 768px) {
       nav {
+        display: none !important;
         position: absolute;
         top: 80px;
         right: 40px;
@@ -196,11 +198,11 @@
         width: 200px;
         border-radius: 10px;
         padding: 10px;
-        display: none;
+        z-index: 1000;
       }
 
       nav.show {
-        display: flex;
+        display: flex !important;
       }
 
       .menu-toggle {
@@ -222,10 +224,10 @@
       <span></span>
     </div>
     <nav id="navbar">
-      <a href="view-patients.html">View Patient</a>
-      <a href="input-patient.html">New Patient</a>
-      <a href="team.html">Our Team</a>
-      <a href="mission-vision.html">About</a>
+      <a href="view-patients.html" onclick="toggleMenu()">View Patient</a>
+      <a href="input-patient.html" onclick="toggleMenu()">New Patient</a>
+      <a href="team.html" onclick="toggleMenu()">Our Team</a>
+      <a href="mission-vision.html" onclick="toggleMenu()">About</a>
     </nav>
   </header>
 
