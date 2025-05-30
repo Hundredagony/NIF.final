@@ -264,11 +264,11 @@
       renderSection("treatment", [
         { label: 'Diagnosis', value: p.diagnosis },
         { label: 'Medications', value: (p.medications || []).join(', ') },
-        { label: 'Diet', value: (p.diet || []).join(', ') },
         { label: 'Lab Tests', value: p.labTests },
         { label: 'Physical Exam', value: p.physicalExam },
         { label: 'Doctor’s Orders', value: p.doctorOrders },
-        { label: 'Procedures', value: p.procedures }
+        { label: 'Procedures', value: p.procedures },
+        { label: 'Diet', value: (p.diet || []).join(', ') }
       ]);
     } else {
       document.querySelector('.container').innerHTML = "<p style='color:red;'>Patient not found.</p>";
