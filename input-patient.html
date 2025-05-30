@@ -251,41 +251,40 @@
         </div>
       </div>
 
-      <div class="section-box">
-        <h2>Assessment</h2>
-        <div class="section">
-          <label>Temperature <input type="text" id="temp"></label>
-          <label>Pulse <input type="text" id="pulse"></label>
-          <label>Respiratory <input type="text" id="resp"></label>
-          <label>Blood Pressure <input type="text" id="bp"></label>
+<div class="section-box">
+  <h2>Assessment</h2>
+  <div class="section">
+    <label>Temperature <input type="text" id="temp"></label>
+    <label>Pulse <input type="text" id="pulse"></label>
+    <label>Respiratory <input type="text" id="resp"></label>
+    <label>Blood Pressure <input type="text" id="bp"></label>
 
-          <label>Medications:
-            <ul id="medicationsList">
-              <li><input type="text" name="medication" placeholder="Medication 1" /></li>
-            </ul>
-            <button type="button" class="add-btn" onclick="addMedication()">➕ Add Medication</button>
-          </label>
+    <label>Medications:
+      <ul id="medicationsList">
+        <li><input type="text" name="medication" placeholder="Medication 1" /></li>
+      </ul>
+      <button type="button" class="add-btn" onclick="addMedication()">➕ Add Medication</button>
+    </label>
+  </div>
+</div>
+      
+ <div class="section-box">
+  <h2>Physical Examination</h2>
+  <div class="section">
+    <label>Diagnosis <textarea id="diagnosis"></textarea></label>
+    <label>Laboratory/Diagnostic Test <textarea id="labTests"></textarea></label>
+    <label>Physical Examination <textarea id="physicalExam"></textarea></label>
+    <label>Doctor’s Orders <textarea id="doctorOrders"></textarea></label>
+    <label>Procedures <textarea id="procedures"></textarea></label>
 
-          <label>Diet:
-            <ul id="dietList">
-              <li><input type="text" name="diet" placeholder="Diet 1" /></li>
-            </ul>
-            <button type="button" class="add-btn" onclick="addDiet()">➕ Add Diet</button>
-          </label>
-        </div>
-      </div>
-
-      <div class="section-box">
-        <h2>Clinical Notes</h2>
-        <div class="section">
-          <label>Diagnosis <textarea id="diagnosis"></textarea></label>
-          <label>Laboratory/Diagnostic Test <textarea id="labTests"></textarea></label>
-          <label>Physical Examination <textarea id="physicalExam"></textarea></label>
-          <label>Doctor’s Orders <textarea id="doctorOrders"></textarea></label>
-          <label>Procedures <textarea id="procedures"></textarea></label>
-        </div>
-      </div>
-    </div>
+    <label>Diet:
+      <ul id="dietList">
+        <li><input type="text" name="diet" placeholder="Diet 1" /></li>
+      </ul>
+      <button type="button" class="add-btn" onclick="addDiet()">➕ Add Diet</button>
+    </label>
+  </div>
+</div>
 
     <div class="actions">
       <button type="submit" class="save">Data Save</button>
