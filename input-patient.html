@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Enter Patient Data</title>
   <style>
+    /* ... same styles as before ... */
     * {
       margin: 0; padding: 0;
       box-sizing: border-box;
@@ -210,7 +211,7 @@
     </div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="navbar">
-        <a href="index.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="view-patients.html">View Patient</a>
       <a href="input-patient.html">New Patient</a>
       <a href="mission-vision.html">About</a>
@@ -234,6 +235,8 @@
             </select>
           </label>
           <label>Date of Admission <input type="datetime-local" id="datetime"></label>
+          <label>Medical Record Number <input type="text" id="medicalNumber"></label>
+          <label>Allergies <input type="text" id="allergies"></label>
           <label>Language <input type="text" id="language"></label>
         </div>
       </div>
@@ -306,6 +309,8 @@
       document.getElementById('age').value = p.age || '';
       document.getElementById('gender').value = p.gender || '';
       document.getElementById('datetime').value = p.datetime || '';
+      document.getElementById('medicalNumber').value = p.medicalNumber || '';
+      document.getElementById('allergies').value = p.allergies || '';
       document.getElementById('language').value = p.language || '';
       document.getElementById('chiefComplaint').value = p.chiefComplaint || '';
       document.getElementById('pastSurgical').value = p.pastSurgical || '';
@@ -373,6 +378,8 @@
         age: document.getElementById('age').value,
         gender: document.getElementById('gender').value,
         datetime: document.getElementById('datetime').value,
+        medicalNumber: document.getElementById('medicalNumber').value,
+        allergies: document.getElementById('allergies').value,
         language: document.getElementById('language').value,
         chiefComplaint: document.getElementById('chiefComplaint').value,
         pastSurgical: document.getElementById('pastSurgical').value,
