@@ -11,6 +11,7 @@
       box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
+
     html, body {
       height: 100%;
     }
@@ -188,6 +189,7 @@
       <thead>
         <tr>
           <th>Full Name</th>
+          <th>Medical Record #</th>
           <th>Age</th>
           <th>Gender</th>
           <th>Date/Time</th>
@@ -204,6 +206,14 @@
     }
 
     const patients = JSON.parse(localStorage.getItem('patients')) || [];
+
+    // Sort by medical number descending
+    patients.sort((a, b) => {
+      const aNum = a.medicalNumber ? parseInt(a.medicalNumber.replace(/\D/g, '')) : 0;
+      const bNum = b.medicalNumber ? parseInt(b.medicalNumber.replace(/\D/g, '')) : 0;
+      return bNum - aNum;
+    });
+
     const tableBody = document.getElementById('patientsTable');
 
     function renderPatients() {
@@ -213,6 +223,7 @@
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>${fullName || 'N/A'}</td>
+          <td>${p.medicalNumber || 'N/A'}</td>
           <td>${p.age || 'N/A'}</td>
           <td>${p.gender || 'N/A'}</td>
           <td>${p.datetime || 'N/A'}</td>
