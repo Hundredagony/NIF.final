@@ -177,7 +177,7 @@
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="navbar">
       <input type="text" id="searchInput" placeholder="Search patient..." />
-    <a href="home.html">Home</a>
+      <a href="home.html">Home</a>
       <a href="input-patient.html">New Patient</a>
       <a href="mission-vision.html">About</a>
     </nav>
@@ -216,6 +216,21 @@
 
     const tableBody = document.getElementById('patientsTable');
 
+    function formatDateTime(dateStr) {
+      if (!dateStr) return 'N/A';
+      const date = new Date(dateStr);
+      if (isNaN(date)) return dateStr;
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      };
+      return date.toLocaleString('en-US', options);
+    }
+
     function renderPatients() {
       tableBody.innerHTML = '';
       patients.forEach((p, i) => {
@@ -226,7 +241,7 @@
           <td>${p.medicalNumber || 'N/A'}</td>
           <td>${p.age || 'N/A'}</td>
           <td>${p.gender || 'N/A'}</td>
-          <td>${p.datetime || 'N/A'}</td>
+          <td>${formatDateTime(p.datetime) || 'N/A'}</td>
           <td class="actions">
             <button class="view-btn" onclick="viewPatient(${i})">View</button>
             <button class="edit-btn" onclick="editPatient(${i})">Edit</button>
