@@ -13,6 +13,7 @@
       height: 100vh;
       font-family: Arial, sans-serif;
     }
+
     .login-container {
       background: rgba(255,255,255,0.9);
       padding: 30px;
@@ -22,6 +23,17 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       text-align: center;
     }
+
+    .login-container img {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
     input {
       width: 100%;
       padding: 12px;
@@ -29,6 +41,7 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
+
     button {
       width: 100%;
       padding: 12px;
@@ -40,14 +53,21 @@
       font-weight: bold;
       cursor: pointer;
     }
+
+    button:hover {
+      background: #0056b3;
+    }
+
     .footer {
       margin-top: 15px;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
-    <h2>Login</h2>
+    <img src="logo.png" alt="Logo">
+    <h2>Login to Your Account</h2>
     <input type="text" id="email" placeholder="Email" required />
     <input type="password" id="password" placeholder="Password" required />
     <button onclick="login()">Login</button>
